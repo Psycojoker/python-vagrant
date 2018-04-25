@@ -719,18 +719,18 @@ class Vagrant(object):
         if NO_SNAPSHOTS_PUSHED in output:
             raise RuntimeError(NO_SNAPSHOTS_PUSHED)
 
-    def snapshot_save(self, name):
+    def snapshot_save(self, box, name):
         '''
         This command saves a new named snapshot.
         If this command is used, the push and pop subcommands cannot be safely used.
         '''
-        self._call_vagrant_command(['snapshot', 'save', name])
+        self._call_vagrant_command(['snapshot', 'save', box, name])
 
-    def snapshot_restore(self, name):
+    def snapshot_restore(self, box, name):
         '''
         This command restores the named snapshot.
         '''
-        self._call_vagrant_command(['snapshot', 'restore', name])
+        self._call_vagrant_command(['snapshot', 'restore', box, name])
 
     def snapshot_list(self):
         '''
